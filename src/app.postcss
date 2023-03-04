@@ -1,0 +1,38 @@
+/* Write your global styles here, in PostCSS syntax */
+
+@tailwind base;
+
+/* Estilos para pantallas grandes */
+@media screen and (min-width: 768px) {
+  body,
+  html {
+    background-image: url(bg-large.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: rgb(17 24 39 / 1);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-size: cover; /* ajustar el tamaño del fondo para cubrir toda la pantalla */
+  }
+}
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 767px) {
+  body,
+  html {
+    background-image: url(bg-mobile.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: rgb(17 24 39 / 1);
+    color: #fff;
+    /* ajustar el tamaño del fondo para cubrir toda la pantalla */
+  }
+}
+
+@tailwind components;
+
+@tailwind utilities;
