@@ -45,7 +45,7 @@ export const languages = {
   },
   Header: {
     View: {
-      en: 'Star project',
+      en: 'View project',
       es: 'Ver proyecto',
     },
   },
