@@ -1,14 +1,15 @@
 <script lang="ts">
-  import lang from './store';
+import lang from './store';
 
-  function changeLanguage() {
-    let currentLanguage = '';
-    lang.subscribe((value) => {
-      currentLanguage = value;
-    })();
-    const newLanguage = currentLanguage === 'en' ? 'es' : 'en';
-    lang.set(newLanguage);
-  }
+function changeLanguage() {
+  let currentLanguage = lang.current;
+  lang.subscribe(value => {
+    currentLanguage = value;
+  })();
+  const newLanguage = currentLanguage === 'en' ? 'es' : 'en';
+  lang.set(newLanguage);
+}
+
 </script>
 
 <button

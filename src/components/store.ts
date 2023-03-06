@@ -10,6 +10,11 @@ const lang = {
   set: (language: string) => {
     languageStore.set(language);
   },
+  current: defaultLanguage, 
 };
+
+languageStore.subscribe(language => {
+  lang.current = language;
+});
 
 export default lang;
