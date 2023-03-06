@@ -26,6 +26,11 @@
   let gameState: GameState = GameState.Start;
   let imageUrl: string = '';
   let percentage: string = '';
+  let showHintsActive = false;
+
+  const useHint = (): void => {
+    showHintsActive = true;
+  };
 
   const setImageDimensions = ({
     width,
@@ -81,6 +86,7 @@
     gameState = GameState.Start;
     image.dimensions.width = '';
     image.dimensions.height = '';
+    showHintsActive = false;
   };
 
   const handleContextMenu = (event: MouseEvent) => event.preventDefault();
@@ -90,16 +96,13 @@
   class="flex flex-col justify-center items-center  h-[320px] w-[320px] my-5 border-l-4 border-b-4 border-gray-300 border-dashed border-opacity-75"
 >
   {#if gameState === GameState.Start}
-  <div class="w-64 h-64 flex justify-center items-center">
-    <div class="flex flex-col items-center">
-    <Icons iconName="arrowDown" />
-    <Button page="Start" word="Start Game" onClick={handleClick} />
-    <Icons iconName="arrowUp" />
-
+    <div class="w-64 h-64 flex justify-center items-center">
+      <div class="flex flex-col items-center">
+        <Icons iconName="arrowDown" />
+        <Button page="Start" word="Start Game" onClick={handleClick} />
+        <Icons iconName="arrowUp" />
+      </div>
     </div>
-  </div>
-  
-
   {:else if gameState === GameState.ShowImage}
     <img
       src={imageUrl}
@@ -134,6 +137,18 @@
       />
 
       <Button page="Guessed" word="Submit" onClick={handleGuess} />
+
+      <div class="mt-4 p-4">
+        {#if showHintsActive}
+          {#if Math.random() >= 0.5}
+            <p>The image width is: {image.dimensions.width}px</p>
+          {:else}
+            <p>The image height is: {image.dimensions.height}px</p>
+          {/if}
+        {:else}
+          <button on:click={useHint}>Show Hints</button>
+        {/if}
+      </div>
     </div>
   {:else if gameState === GameState.Result}
     <div class="text-center flex flex-col w-2/3">
@@ -153,8 +168,13 @@
         <Lang page="Result" word="percentage" />
         <strong
           class="bg-gradient-to-r from-green-300 via-green-500 to-green-600 bg-clip-text font-extrabold text-transparent"
-          >{percentage}</strong
         >
+          {#if showHintsActive}
+            {percentage} (with hints)
+          {:else}
+            {percentage}
+          {/if}
+        </strong>
       </p>
       <Button page="Result" word="Play again" onClick={restartGame} />
     </div>
