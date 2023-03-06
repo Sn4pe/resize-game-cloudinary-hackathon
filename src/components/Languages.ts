@@ -28,6 +28,18 @@ export const languages = {
       en: 'Submit',
       es: 'Enviar',
     },
+    'width hint': {
+      en: 'The image width is: ',
+      es: 'El ancho de la imagen es: ',
+    },
+    'height hint': {
+      en: 'The image height is: ',
+      es: 'El alto de la imagen es: ',
+    },
+    Hints: {
+      en: 'Show hint',
+      es: 'Mostrar pista',
+    },
   },
   Result: {
     'Play again': {
@@ -72,7 +84,7 @@ export const languages = {
       en: 'Developed by',
       es: 'Desarrollado por',
     },
-    "Logo design": {
+    'Logo design': {
       en: 'logo design by',
       es: 'diseño del logo por',
     },

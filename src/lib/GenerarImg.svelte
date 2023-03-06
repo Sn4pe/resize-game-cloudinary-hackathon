@@ -138,15 +138,19 @@
 
       <Button page="Guessed" word="Submit" onClick={handleGuess} />
 
-      <div class="mt-4 p-4">
+      <div class="mt-3 flex justify-center items-center text-center">
         {#if showHintsActive}
           {#if Math.random() >= 0.5}
-            <p>The image width is: {image.dimensions.width}px</p>
+            <p><Lang page="Guessed" word="width hint"/> <strong
+              class="bg-gradient-to-r from-green-300 via-green-500 to-green-600 bg-clip-text font-extrabold text-transparent"
+              >{image.dimensions.width}</strong>px</p>
           {:else}
-            <p>The image height is: {image.dimensions.height}px</p>
+            <p><Lang page="Guessed" word="height hint"/>  <strong
+              class="bg-gradient-to-r from-green-300 via-green-500 to-green-600 bg-clip-text font-extrabold text-transparent"
+              >{image.dimensions.height}</strong>px</p>
           {/if}
         {:else}
-          <button on:click={useHint}>Show Hints</button>
+          <button on:click={useHint} class="flex underline hover:opacity-75 ml-2 items-center"><Lang page="Guessed" word="Hints"/><Icons iconName="lightbulb"/></button>
         {/if}
       </div>
     </div>
